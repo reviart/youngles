@@ -18,9 +18,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::prefix('public')->group(function () {
-  Route::get('file', 'PublicController@index')->name('public.file');
-  Route::post('find', 'PublicController@find')->name('public.file.find');
-  Route::get('download/{id}', 'PublicController@download')->name('public.file.download');
+  Route::get('about', 'PublicController@about')->name('public.about');
+  Route::post('post', 'PublicController@post')->name('public.post');
+  Route::post('price', 'PublicController@price')->name('public.price');
 });
 
 Route::prefix('post')->group(function () {
@@ -36,7 +36,6 @@ Route::prefix('post')->group(function () {
 Route::get('/home', 'HomeController@index')->name('home');
 Route::prefix('profile')->group(function () {
   Route::get('/', 'HomeController@home')->name('profile.home');
-  Route::get('detail/{id}', 'HomeController@detail')->name('profile.detail');
   Route::get('edit/{id}', 'HomeController@show')->name('profile.edit');
   Route::put('saveEdit/{id}', 'HomeController@update')->name('profile.edit.submit');
 });

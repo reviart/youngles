@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -29,7 +30,13 @@ class HomeController extends Controller
 
     public function home()
     {
-      //$datas = User::all()
-        return view('profile.home');
+      $datas = User::all();
+      return view('profile.home', compact('datas'));
+    }
+
+    public function show($id)
+    {
+      $datas = User::where('id', $id)->first();
+      return view('profile.edit', compact('datas'));
     }
 }

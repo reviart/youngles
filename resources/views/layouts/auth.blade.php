@@ -96,16 +96,23 @@
           <!-- User Account: style can be found in dropdown.less -->
           <?php
             $nama = Auth::user()->name;
+
+            if (Auth::user()->path_img == NULL) {
+              $ava = asset('avatar.png');
+            }
+            else {
+              $ava = Auth::user()->path_img;
+            }
           ?>
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+              <img src="{{$ava}}" class="user-image" alt="User Image">
               <span class="hidden-xs">{{$nama}}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                <img src="{{$ava}}" class="img-circle" alt="User Image">
                 <p>
                   {{$nama}} - {{Auth::user()->job}}
                   <small>Member since {{Auth::user()->created_at}}</small>
@@ -141,7 +148,7 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+          <img src="{{$ava}}" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p>{{substr($nama,0,15)}}</p>
@@ -151,27 +158,27 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
-        <li class="treeview">
+        <li>
           <a href="{{route('home')}}">
-          <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
         </li>
-        <li class="treeview">
+        <li>
           <a href="{{route('program.index')}}">
           <i class="fa fa-product-hunt"></i> <span>Programs</span>
           </a>
         </li>
-        <li class="treeview">
+        <li>
           <a href="{{route('post.index')}}">
           <i class="fa fa-users"></i> <span>Members</span>
           </a>
         </li>
-        <li class="treeview">
+        <li>
           <a href="{{route('post.index')}}">
           <i class="fa fa-info-circle"></i> <span>Posts</span>
           </a>
         </li>
-        <li class="treeview">
+        <li>
           <a href="{{route('profile.home')}}">
           <i class="fa fa-user"></i> <span>Profile</span>
           </a>

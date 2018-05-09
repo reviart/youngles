@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -26,6 +27,16 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    protected $dates = [
+      'last_login'
+    ];
+
+    public function getLastLoginAttribute()
+    {
+        return Carbon::parse($this->attributes['last_login'])
+           ->format('d, M Y H:i');
+    }
 
     public function programs()
     {
