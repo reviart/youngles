@@ -24,7 +24,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-      //$datas = User::all()
         return view('home');
     }
 
@@ -38,5 +37,44 @@ class HomeController extends Controller
     {
       $datas = User::where('id', $id)->first();
       return view('profile.edit', compact('datas'));
+    }
+
+    public function update(Request $request, $id)
+    {
+      $datas = User::find($id);
+      $oldImage = $datas->path;
+
+      $this->validate($request, [
+        'name' => 'required|string|max:191',
+        'email' => 'required|string|email|max:191|unique:users',
+        'path_img' => 'nullable|mimes:jpeg,bmp,png|max:2048'
+      ]);
+
+      if ($request->hasFile('path'))
+      {
+        if (file_exists(storage_path($oldImage))) {
+          return redirect()->route('produk.index')->with('warning', 'Gagal edit produk, terdapat gambar yang sama!');
+        }
+        $file     = $request->file('path_img');
+        $fileName = $file->getClientOriginalName();
+        //$fileExt  = $file->getClientOriginalExtension();
+
+        //Move Uploaded File
+        $destinationPath = 'Images/';
+        $file->move($destinationPath, $fileName);
+
+        $newPath = 'Images/'.$fileName;
+        $datas->path = $newPath;
+        $datas->update();
+      }
+
+      //store to db
+      $datas->update([
+        'name' => $request->get('name'),
+        'email' => $request->get('email'),
+        'job' => $request->get('job')
+      ]);
+
+      return redirect()->route('produk.index')->with('success', 'profile has been successfully updated!');
     }
 }

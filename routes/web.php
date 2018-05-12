@@ -34,6 +34,7 @@ Route::prefix('post')->group(function () {
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
+
 Route::prefix('profile')->group(function () {
   Route::get('/', 'HomeController@home')->name('profile.home');
   Route::get('edit/{id}', 'HomeController@show')->name('profile.edit');
