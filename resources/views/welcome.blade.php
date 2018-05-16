@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/5/53/Wikimedia-logo.png">
+    <link rel="icon" href="{{asset('yl_logo.png')}}">
 
     <title>YoungLes</title>
 

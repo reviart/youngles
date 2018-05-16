@@ -6,12 +6,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Create Program
+        Create Information
         <small>Control panel</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-user"></i> Home</a></li>
-        <li class="active">Program</li>
+        <li class="active">Information</li>
       </ol>
     </section>
 
@@ -21,15 +21,15 @@
         <div class="col-md-6 col-md-offset-3">
           <div class="box box-primary">
             <!-- form start -->
-            <form role="form" method="POST" action="{{ route('program.store.submit') }}" enctype="multipart/form-data">
+            <form role="form" method="POST" action="{{ route('information.store.submit') }}" enctype="multipart/form-data">
               {{ csrf_field() }}
               <div class="box-body">
                 <div class="form-group">
-                  <label for="program_name">Program name</label>
-                  <input type="text" class="form-control" name="program_name" required>
-                  @if ($errors->has('program_name'))
+                  <label for="title">Title</label>
+                  <input type="text" class="form-control" name="title" required>
+                  @if ($errors->has('title'))
                       <span class="help-block">
-                          <strong>{{ $errors->first('program_name') }}</strong>
+                          <strong>{{ $errors->first('title') }}</strong>
                       </span>
                   @endif
                 </div>
@@ -39,15 +39,6 @@
                   @if ($errors->has('description'))
                       <span class="help-block">
                           <strong>{{ $errors->first('description') }}</strong>
-                      </span>
-                  @endif
-                </div>
-                <div class="form-group">
-                  <label for="price">Price</label>
-                  <input type="number" class="form-control" name="price" placeholder="1000000" required>
-                  @if ($errors->has('price'))
-                      <span class="help-block">
-                          <strong>{{ $errors->first('price') }}</strong>
                       </span>
                   @endif
                 </div>

@@ -19,18 +19,18 @@ Auth::routes();
 
 Route::prefix('public')->group(function () {
   Route::get('about', 'PublicController@about')->name('public.about');
-  Route::post('post', 'PublicController@post')->name('public.post');
+  Route::post('information', 'PublicController@post')->name('public.information');
   Route::post('price', 'PublicController@price')->name('public.price');
 });
 
-Route::prefix('post')->group(function () {
-  Route::get('/', 'InformationController@index')->name('post.index');
-  Route::get('detail/{id}', 'InformationController@detail')->name('post.detail');
-  Route::get('/store', 'InformationController@create')->name('post.store');
-  Route::post('/store', 'InformationController@store')->name('post.store.submit');
-  Route::get('edit/{id}', 'InformationController@show')->name('post.edit');
-  Route::put('saveEdit/{id}', 'InformationController@update')->name('post.edit.submit');
-  Route::delete('destroy/{id}', 'InformationController@destroy')->name('post.destroy');
+Route::prefix('information')->group(function () {
+  Route::get('/', 'InformationController@index')->name('information.index');
+  Route::get('detail/{id}', 'InformationController@detail')->name('information.detail');
+  Route::get('/store', 'InformationController@create')->name('information.store');
+  Route::post('/store', 'InformationController@store')->name('information.store.submit');
+  Route::get('edit/{id}', 'InformationController@show')->name('information.edit');
+  Route::put('saveEdit/{id}', 'InformationController@update')->name('information.edit.submit');
+  Route::delete('destroy/{id}', 'InformationController@destroy')->name('information.destroy');
 });
 
 Route::get('/home', 'HomeController@index')->name('home');

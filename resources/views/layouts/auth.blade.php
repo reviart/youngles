@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="icon" href="{{asset('yl_logo.png')}}">
   <title>YL-Admin</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -115,7 +116,7 @@
                 <img src="{{$ava}}" class="img-circle" alt="User Image">
                 <p>
                   {{$nama}} - {{Auth::user()->job}}
-                  <small>Member since {{Auth::user()->created_at}}</small>
+                  <small>Member since {{Auth::user()->created_at->format('d, M Y H:i')}}</small>
                 </p>
               </li>
               <!-- Menu Footer-->
@@ -169,15 +170,16 @@
           </a>
         </li>
         <li>
-          <a href="{{route('post.index')}}">
+          <a href="{{route('member.index')}}">
           <i class="fa fa-users"></i> <span>Members</span>
           </a>
         </li>
         <li>
-          <a href="{{route('post.index')}}">
-          <i class="fa fa-info-circle"></i> <span>Posts</span>
+          <a href="{{route('information.index')}}">
+          <i class="fa fa-info-circle"></i> <span>Informations</span>
           </a>
         </li>
+        <li class="header">ACCOUNT NAVIGATION</li>
         <li>
           <a href="{{route('profile.home')}}">
           <i class="fa fa-user"></i> <span>Profile</span>

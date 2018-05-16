@@ -3,9 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/5/53/Wikimedia-logo.png">
+    <link rel="icon" href="{{asset('yl_logo.png')}}">
 
     <title>SPB</title>
 
@@ -20,9 +18,7 @@
     <form class="form-signin" method="POST" action="{{ route('login') }}">
       {{csrf_field()}}
       <div class="text-center mb-4">
-        <img class="mb-4" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Wikimedia-logo.png" alt="" width="72" height="72">
-        <h1 class="h3 mb-3 font-weight-normal">Young Les</h1>
-        <p>Web server dibuat untuk membantu pertukaran dan penyimpanan data sementara pada PT.PLN Banten Utara</p>
+        <img class="mb-4" src="{{asset('yl_logo.png')}}" alt="" width=100 height="120">
       </div>
 
       <div class="form-label-group">

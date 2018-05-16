@@ -24,7 +24,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+      $members = User::count();
+        return view('home', compact('members'));
     }
 
     public function home()
