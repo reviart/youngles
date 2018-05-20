@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Storage;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -43,39 +44,35 @@ class HomeController extends Controller
     public function update(Request $request, $id)
     {
       $datas = User::find($id);
-      $oldImage = $datas->path;
-
+      $oldImage = $datas->path_img;
       $this->validate($request, [
         'name' => 'required|string|max:191',
-        'email' => 'required|string|email|max:191|unique:users',
         'path_img' => 'nullable|mimes:jpeg,bmp,png|max:2048'
       ]);
-
-      if ($request->hasFile('path'))
+      if ($request->hasFile('path_img'))
       {
-        if (file_exists(storage_path($oldImage))) {
-          return redirect()->route('produk.index')->with('warning', 'Gagal edit produk, terdapat gambar yang sama!');
+        $newName = $request->file('path_img')->getClientOriginalName();
+        $newPath = 'images/users/'.$newName;
+        if (file_exists($newPath)) {
+          return redirect()->route('profile.home')->with('warning', 'Edit failed, there is the same image!');
         }
-        $file     = $request->file('path_img');
-        $fileName = $file->getClientOriginalName();
-        //$fileExt  = $file->getClientOriginalExtension();
+        $request->file('path_img')->storeAs('images/users', $newName);
 
-        //Move Uploaded File
-        $destinationPath = 'Images/';
-        $file->move($destinationPath, $fileName);
-
-        $newPath = 'Images/'.$fileName;
-        $datas->path = $newPath;
-        $datas->update();
+        if (is_null($oldImage)){
+          $datas->path_img = $newPath;
+          $datas->update();
+        }
+        else{
+          $datas->path_img = $newPath;
+          $datas->update();
+          Storage::delete($oldImage);
+        }
       }
-
       //store to db
       $datas->update([
         'name' => $request->get('name'),
-        'email' => $request->get('email'),
         'job' => $request->get('job')
       ]);
-
-      return redirect()->route('produk.index')->with('success', 'profile has been successfully updated!');
+      return redirect()->route('profile.home')->with('success', 'Profile has been successfully updated!');
     }
 }

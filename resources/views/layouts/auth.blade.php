@@ -102,7 +102,7 @@
               $ava = asset('avatar.png');
             }
             else {
-              $ava = Auth::user()->path_img;
+              $ava = asset(Auth::user()->path_img);
             }
           ?>
           <li class="dropdown user user-menu">

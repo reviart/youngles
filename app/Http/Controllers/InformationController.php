@@ -36,7 +36,7 @@ class InformationController extends Controller
     $this->validate($request, [
         'title' => 'required|max:191',
         'description' => 'required',
-        'path_img' => 'nullable|mimes:jpeg,bmp,png|max:1024'
+        'path_img' => 'nullable|mimes:jpeg,bmp,png|max:2048'
     ]);
 
     if ($request->hasFile('path_img'))
@@ -44,8 +44,11 @@ class InformationController extends Controller
       $data = $request->input('path_img');
       $photo = $request->file('path_img')->getClientOriginalName();
       $destination = 'images/informations';
-      $request->file('path_img')->storeAs($destination, $photo);
       $path_img = $destination."/".$photo;
+      if (file_exists($path_img)) {
+        return redirect()->route('information.index')->with('warning', 'Create failed, there is the same image!');
+      }
+      $request->file('path_img')->storeAs($destination, $photo);
     }
     else {
       $path_img = NULL;
@@ -75,17 +78,17 @@ class InformationController extends Controller
     $this->validate($request, [
       'title' => 'required|max:191',
       'description' => 'required',
-      'path_img' => 'nullable|mimes:jpeg,bmp,png|max:1024'
+      'path_img' => 'nullable|mimes:jpeg,bmp,png|max:2048'
     ]);
 
     if ($request->hasFile('path_img'))
     {
-      if (file_exists(storage_path($oldImage))) {
+      $newName = $request->file('path_img')->getClientOriginalName();
+      $newPath = 'images/informations/'.$newName;
+      if (file_exists($newPath)) {
         return redirect()->route('information.index')->with('warning', 'Edit failed, there is the same image!');
       }
-      $newName = $request->file('path_img')->getClientOriginalName();
       $request->file('path_img')->storeAs('images/informations', $newName);
-      $newPath = 'images/informations/'.$newName;
       $datas->path_img = $newPath;
       $datas->update();
 

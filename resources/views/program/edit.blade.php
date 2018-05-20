@@ -26,11 +26,11 @@
               {{ method_field('PUT') }}
               <div class="box-body">
                 <div class="form-group">
-                  <label for="title">Title</label>
-                  <input type="text" class="form-control" name="title" value="{{$programs->title}}" required>
-                  @if ($errors->has('title'))
+                  <label for="program_name">Title</label>
+                  <input type="text" class="form-control" name="program_name" value="{{$programs->program_name}}" required>
+                  @if ($errors->has('program_name'))
                       <span class="help-block">
-                          <strong>{{ $errors->first('title') }}</strong>
+                          <strong>{{ $errors->first('program_name') }}</strong>
                       </span>
                   @endif
                 </div>
@@ -40,6 +40,15 @@
                   @if ($errors->has('description'))
                       <span class="help-block">
                           <strong>{{ $errors->first('description') }}</strong>
+                      </span>
+                  @endif
+                </div>
+                <div class="form-group">
+                  <label for="price">Price</label>
+                  <input type="number" class="form-control" name="price" value="{{$programs->price}}" required>
+                  @if ($errors->has('price'))
+                      <span class="help-block">
+                          <strong>{{ $errors->first('price') }}</strong>
                       </span>
                   @endif
                 </div>

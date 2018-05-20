@@ -43,7 +43,11 @@ class ProgramController extends Controller
         $data = $request->input('path_img');
         $photo = $request->file('path_img')->getClientOriginalName();
         $destination = 'images/programs';
-        $request->file('path_img')->storeAs($destination, $photo);
+        $path_img = $destination."/".$photo;
+        if (file_exists($path_img)) {
+          return redirect()->route('program.index')->with('warning', 'Create failed, there is the same image!');
+        }
+        $request->file('path_img')->storeAs($destination, $photo);        
 
         $object = new Program;
         $object->program_name = $request->get('program_name');
@@ -76,12 +80,12 @@ class ProgramController extends Controller
 
       if ($request->hasFile('path_img'))
       {
-        if (file_exists(storage_path($oldImage))) {
+        $newName = $request->file('path_img')->getClientOriginalName();
+        $newPath = 'images/programs/'.$newName;
+        if (file_exists($newPath)) {
           return redirect()->route('program.index')->with('warning', 'Edit failed, there is the same image!');
         }
-        $newName = $request->file('path_img')->getClientOriginalName();
         $request->file('path_img')->storeAs('images/programs', $newName);
-        $newPath = 'images/programs/'.$newName;
         $datas->path_img = $newPath;
         $datas->update();
 

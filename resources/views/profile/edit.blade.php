@@ -24,7 +24,7 @@
               $ava = asset('avatar.png');
             }
             else {
-              $ava = Auth::user()->path_img;
+              $ava = asset(Auth::user()->path_img);
             }
           ?>
           <div class="box box-primary">
@@ -38,10 +38,6 @@
                   <input type="text" class="form-control" id="name" value="{{$datas->name}}" name="name">
                 </div>
                 <div class="form-group">
-                  <label for="email">Email address</label>
-                  <input type="email" class="form-control" id="email" value="{{$datas->email}}" name="email">
-                </div>
-                <div class="form-group">
                   <label for="job">Job</label>
                   <input type="text" class="form-control" id="job" value="{{$datas->job}}" name="job">
                 </div>
@@ -53,7 +49,9 @@
               </div>
               <!-- /.box-body -->
               <div class="box-footer">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" onclick="return confirm('Is the data filled correctly?')" class="btn btn-primary">
+                    Submit
+                </button>
                 <a href="{{route('profile.home')}}" class="btn btn-warning">Cancel</a>
               </div>
             </form>
