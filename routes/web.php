@@ -19,8 +19,8 @@ Auth::routes();
 
 Route::prefix('public')->group(function () {
   Route::get('about', 'PublicController@about')->name('public.about');
-  Route::post('information', 'PublicController@post')->name('public.information');
-  Route::post('price', 'PublicController@price')->name('public.price');
+  Route::get('information', 'PublicController@information')->name('public.information');
+  Route::get('price', 'PublicController@price')->name('public.price');
 });
 
 Route::prefix('information')->group(function () {
