@@ -20,6 +20,7 @@ Auth::routes();
 Route::prefix('public')->group(function () {
   Route::get('about', 'PublicController@about')->name('public.about');
   Route::get('information', 'PublicController@information')->name('public.information');
+  Route::get('information/{id}', 'PublicController@detailinformation')->name('public.detailinformation');
   Route::get('price', 'PublicController@price')->name('public.price');
 });
 

@@ -11,7 +11,7 @@ class InformationComposer
     {
         $informations = Information::orderBy('created_at')->get();
         $view->with('informations', $informations);
-        $informationstwo = Information::orderBy('created_at')->take(3)->get();
+        $informationstwo = Information::orderBy('created_at', 'DESC')->take(3)->get();
         $view->with('informationstwo', $informationstwo);
     }
 }

@@ -22,7 +22,7 @@
               <p class="card-text">{{substr($item->title, 0, 50)}}</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-primary">View</button>
+                  <a href="{{ route('public.detailinformation', [$item->id]) }}" class="btn btn-sm btn-outline-primary">View</a>
                 </div>
                 <small class="text-muted">{{$item->created_at->format('d, M Y H:i')}}</small>
               </div>
