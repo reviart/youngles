@@ -52,7 +52,7 @@
                   @endif
                 </div>
                 <div class="form-group">
-                  <label for="path_img">Picture</label>
+                  <label for="path_img">Picture <i>(perspective)</i></label>
                   <input type="file" name="path_img">
                   <span class="help-block text-danger">{{ $errors->first('path_img') }}</span>
                 </div>

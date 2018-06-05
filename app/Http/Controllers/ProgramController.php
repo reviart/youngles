@@ -16,7 +16,7 @@ class ProgramController extends Controller
 
     public function index()
     {
-        $programs = Program::with('user')->get();
+        $programs = Program::with('user')->orderBy('program_name', 'ASC')->get();
         return view('program.index', compact('programs'));
     }
 
@@ -47,7 +47,7 @@ class ProgramController extends Controller
         if (file_exists($path_img)) {
           return redirect()->route('program.index')->with('warning', 'Create failed, there is the same image!');
         }
-        $request->file('path_img')->storeAs($destination, $photo);        
+        $request->file('path_img')->storeAs($destination, $photo);
 
         $object = new Program;
         $object->program_name = $request->get('program_name');

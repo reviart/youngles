@@ -18,10 +18,7 @@
           <div class="card-body">
             <h2 class="card-title pricing-card-title">{{$item->price}} IDR <small class="text-muted">/ period</small></h2>
             <ul class="list-unstyled mt-3 mb-4">
-              <li>10 users included</li>
-              <li>2 GB of storage</li>
-              <li>Email support</li>
-              <li>Help center access</li>
+              {{--<li>10 users included</li>--}}
             </ul>
             <button type="button" class="btn btn-lg btn-block btn-outline-primary">Register now!</button>
           </div>

@@ -18,10 +18,9 @@ class CreateMembersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('come_from');
-            $table->string('address');
+            $table->text('address');
             $table->string('phone_number');
             $table->unsignedInteger('program_id');
-            $table->string('generation');
             $table->enum('status', ['Alumni', 'Membership']);
             $table->unsignedInteger('user_id')->nullable();
             $table->timestamps();
