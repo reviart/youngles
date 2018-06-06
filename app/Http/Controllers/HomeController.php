@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Storage;
+use App\Program;
 use App\Member;
+use App\Information;
+use App\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -25,8 +28,10 @@ class HomeController extends Controller
      */
     public function index()
     {
+      $programs = Program::count();
       $members = Member::count();
-      return view('home', compact('members'));
+      $informations = Information::count();
+      return view('home', compact('members', 'programs', 'informations'));
     }
 
     public function home()

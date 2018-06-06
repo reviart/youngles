@@ -20,11 +20,13 @@
             <ul class="list-unstyled mt-3 mb-4">
               {{--<li>10 users included</li>--}}
             </ul>
-            <button type="button" class="btn btn-lg btn-block btn-outline-primary">Register now!</button>
+            <a href="{{route('public.register')}}" class="btn btn-lg btn-block btn-outline-primary">Register now!</a>
           </div>
         </div>
         @endforeach
       </div>
       @endforeach
+
+    </div>
 
 @endsection

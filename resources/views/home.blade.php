@@ -23,13 +23,13 @@
           <!-- small box -->
           <div class="small-box bg-aqua">
             <div class="inner">
-              <h3>150</h3>
-              <p>Messages</p>
+              <h3>{{$programs}}</h3>
+              <p>Programs</p>
             </div>
             <div class="icon">
-              <i class="ion ion-email"></i>
+              <i class="icon ion-android-locate"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{route('program.index')}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -43,7 +43,21 @@
             <div class="icon">
               <i class="ion ion-ios-people-outline"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{route('member.index')}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-aqua">
+            <div class="inner">
+              <h3>{{$informations}}</h3>
+              <p>Posts</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-document-text"></i>
+            </div>
+            <a href="{{route('information.index')}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->

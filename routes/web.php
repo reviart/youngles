@@ -22,6 +22,10 @@ Route::prefix('public')->group(function () {
   Route::get('information', 'PublicController@information')->name('public.information');
   Route::get('information/{id}', 'PublicController@detailinformation')->name('public.detailinformation');
   Route::get('price', 'PublicController@price')->name('public.price');
+  Route::get('about', 'PublicController@about')->name('public.about');
+
+  Route::get('register', 'PublicController@create')->name('public.register');
+  Route::post('register', 'PublicController@store')->name('public.register.submit');
 });
 
 Route::prefix('information')->group(function () {

@@ -76,6 +76,7 @@
                 <th>Name</th>
                 <th>Email</th>
                 <th>Job</th>
+                <th>Created at</th>
                 <th>Last login</th>
               </tr>
               <?php $no = 0; ?>
@@ -85,6 +86,7 @@
                 <td>{{$data->name}}</td>
                 <td>{{$data->email}}</td>
                 <td>{{$data->job}}</td>
+                <td>{{$data->created_at->format('d, M Y H:i')}}</td>
                 <td>{{$data->last_login}}</td>
               </tr>
               @endforeach

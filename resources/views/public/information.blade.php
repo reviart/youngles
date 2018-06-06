@@ -17,7 +17,7 @@
         @foreach($chunk as $item)
         <div class="col-md-4">
           <div class="card mb-4 box-shadow">
-            <img class="card-img-top img-responsive" src="{{asset($item->path_img)}}" alt="Card image cap" height="230px" width="350px">
+            <img class="card-img-top" src="{{asset($item->path_img)}}" alt="Card image cap" height="230px" width="350px">
             <div class="card-body">
               <p class="card-text">{{substr($item->title, 0, 50)}}</p>
               <div class="d-flex justify-content-between align-items-center">

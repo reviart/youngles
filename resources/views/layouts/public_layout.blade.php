@@ -18,6 +18,8 @@
 
     <!-- Custom styles for this template -->
     <link href="https://getbootstrap.com/docs/4.1/examples/album/album.css" rel="stylesheet">
+
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js" integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe" crossorigin="anonymous"></script>
   </head>
   <body>
 
@@ -37,7 +39,7 @@
               <a class="nav-link" href="{{route('public.price')}}">Price</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
+              <a class="nav-link" href="{{route('public.about')}}">About</a>
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">

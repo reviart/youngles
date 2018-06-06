@@ -76,16 +76,23 @@
         <!-- START THE FEATURETTES -->
 
         <hr class="featurette-divider">
-
-        <div class="row featurette">
+        <div class="row">
           <div class="col-md-7">
             <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It'll blow your mind.</span></h2>
-            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+            <ul style="list-style-type: none;">
+              <li style="padding-bottom:10px;"><i class="fas fa-home fa-lg"></i> Learning like at home</li>
+              <li style="padding-bottom:10px;"><i class="fas fa-wifi fa-lg"></i> WI-FI</li>
+              <li style="padding-bottom:10px;"><i class="fas fa-robot fa-lg"></i> Device already available*</li>
+              <li style="padding-bottom:10px;"><i class="fas fa-motorcycle fa-lg"></i> Parking and free shuttle*</li>
+            </ul>
           </div>
           <div class="col-md-5">
-            <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+            <img src="{{asset('facility.png')}}" alt="Photo error" class="img-fluid" width="400px">
           </div>
         </div>
+
+
       </div><!-- /.container -->
 
 @endsection
