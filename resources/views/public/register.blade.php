@@ -4,6 +4,14 @@
     <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto">
       <h1 class="display-4">Register</h1>
       <p class="lead">Quickly build an effective pricing table for your potential customers with this Bootstrap example.</p>
+      <br>
+      @if (session('success'))
+          <div class="alert alert-success">
+            <center>
+              {{ session('success') }}
+            </center>
+          </div>
+      @endif
     </div>
 
     <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto">
@@ -11,12 +19,12 @@
       <form role="form" method="POST" action="{{ route('public.register.submit') }}">
         {{ csrf_field() }}
           <div class="form-group row">
-            <label for="name" class="col-sm-2 col-form-label">Full name</label>
+            <label for="full_name" class="col-sm-2 col-form-label">Full name</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" name="name" required autocomplete="off" autofocus>
-              @if ($errors->has('name'))
+              <input type="text" class="form-control" name="full_name" required autocomplete="off" autofocus>
+              @if ($errors->has('full_name'))
                   <span class="help-block">
-                      <strong>{{ $errors->first('name') }}</strong>
+                      <strong>{{ $errors->first('full_name') }}</strong>
                   </span>
               @endif
             </div>
@@ -30,6 +38,27 @@
                       <strong>{{ $errors->first('email') }}</strong>
                   </span>
               @endif
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="dob" class="col-sm-2 col-form-label">Date of birth</label>
+            <div class="col-sm-10">
+              <input type="date" class="form-control" name="dob" required>
+              @if ($errors->has('dob'))
+                  <span class="help-block">
+                      <strong>{{ $errors->first('dob') }}</strong>
+                  </span>
+              @endif
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="gender" class="col-sm-2 col-form-label">Gender</label>
+            <div class="col-sm-10">
+            <select class="form-control" name="gender" required>
+              <option value="">List gender</option>
+              <option value="Man">Man</option>
+              <option value="Woman">Woman</option>
+            </select>
             </div>
           </div>
           <div class="form-group row">
@@ -80,7 +109,7 @@
           <div class="col-sm-2">
           </div>
           <div class="col-sm-10">
-            <button type="submit" onclick="return confirm('Is the data filled correctly?')" class="btn btn-primary" disabled>
+            <button type="submit" onclick="return confirm('Is the data filled correctly?')" class="btn btn-primary">
                 Register
             </button>
           </div>

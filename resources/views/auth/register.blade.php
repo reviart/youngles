@@ -48,7 +48,7 @@
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" placeholder="Password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+        <input type="password" placeholder="Password (must be at least 6 characters)" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
         @if ($errors->has('password'))
             <span class="invalid-feedback">
                 <strong>{{ $errors->first('password') }}</strong>
@@ -70,7 +70,7 @@
         <span class="glyphicon glyphicon-wrench form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <label for="path_img">Profile picture</label>
+        <label for="path_img">Profile picture (600x600 or perspective)</label>
         <input type="file" name="path_img">
       </div>
       <div class="row">

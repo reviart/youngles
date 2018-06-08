@@ -19,23 +19,48 @@
     <section class="content">
       <div class="row">
         <div class="col-md-6 col-md-offset-3">
-          <div class="box box-primary">
+          <?php
+            if ($members->status == "Alumni") {
+              $box = "box box-danger";
+            }
+            else {
+              $box = "box box-primary";
+            }
+          ?>
+          <div class="{{$box}}">
             <!-- form start -->
             <form role="form" method="POST" action="{{ route('member.edit.submit', [$members->id]) }}">
               {{ csrf_field() }}
               {{ method_field('PUT') }}
               <div class="box-body">
                 <div class="form-group">
-                  <label for="name">Full name</label>
-                  <input type="text" class="form-control" name="name" value="{{$members->name}}" required>
-                  @if ($errors->has('name'))
+                  <label for="full_name">Full name*</label>
+                  <input type="text" class="form-control" name="full_name" value="{{$members->full_name}}" required>
+                  @if ($errors->has('full_name'))
                       <span class="help-block">
-                          <strong>{{ $errors->first('name') }}</strong>
+                          <strong>{{ $errors->first('full_name') }}</strong>
                       </span>
                   @endif
                 </div>
                 <div class="form-group">
-                  <label for="come_from">Come from</label>
+                  <label for="dob">Date of birth*</label>
+                  <input type="date" class="form-control" name="dob" value="{{$members->dob}}" required>
+                  @if ($errors->has('dob'))
+                      <span class="help-block">
+                          <strong>{{ $errors->first('dob') }}</strong>
+                      </span>
+                  @endif
+                </div>
+                <div class="form-group">
+                  <label for="gender">Gender*</label>
+                  <select class="form-control" name="gender" required>
+                    <option value="{{$members->gender}}">{{$members->gender}}</option>
+                    <option value="Pria">Pria</option>
+                    <option value="Wanita">Wanita</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="come_from">Come from*</label>
                   <input type="text" class="form-control" name="come_from" value="{{$members->come_from}}" required>
                   @if ($errors->has('come_from'))
                       <span class="help-block">
@@ -44,7 +69,7 @@
                   @endif
                 </div>
                 <div class="form-group">
-                  <label for="address">Address</label>
+                  <label for="address">Address*</label>
                   <textarea name="address" rows="3" cols="80" required>{{$members->address}}</textarea>
                   @if ($errors->has('address'))
                       <span class="help-block">
@@ -53,7 +78,7 @@
                   @endif
                 </div>
                 <div class="form-group">
-                  <label for="phone_number">Phone number</label>
+                  <label for="phone_number">Phone number*</label>
                   <input type="number" class="form-control" name="phone_number" value="{{$members->phone_number}}" required>
                   @if ($errors->has('phone_number'))
                       <span class="help-block">
@@ -62,7 +87,7 @@
                   @endif
                 </div>
                 <div class="form-group">
-                  <label for="program_id">Program</label>
+                  <label for="program_id">Program*</label>
                   <select class="form-control" name="program_id" required>
                     <option value="{{$members->program_id}}">{{$members->program->program_name}}</option>
                     @foreach($programs as $data)
@@ -71,12 +96,21 @@
                   </select>
                 </div>
                 <div class="form-group">
-                  <label for="status">Status</label>
+                  <label for="status">Status*</label>
                   <select class="form-control" name="status" required>
                     <option value="{{$members->status}}">{{$members->status}}</option>
                     <option value="Alumni">Alumni</option>
                     <option value="Membership">Membership</option>
                   </select>
+                </div>
+                <div class="form-group">
+                  <label for="masterpiece">Masterpiece</label>
+                  <input type="text" class="form-control" name="masterpiece" placeholder="http://beritakampusku.youngles.net/" value="{{$members->masterpiece}}">
+                  @if ($errors->has('masterpiece'))
+                      <span class="help-block">
+                          <strong>{{ $errors->first('masterpiece') }}</strong>
+                      </span>
+                  @endif
                 </div>
               </div>
               <!-- /.box-body -->

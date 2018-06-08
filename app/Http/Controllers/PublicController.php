@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Information;
 use App\Program;
-use App\Member;
+use App\Booked;
 use Illuminate\Http\Request;
 
 class PublicController extends Controller
@@ -39,24 +39,32 @@ class PublicController extends Controller
     public function store(Request $request)
     {
       $this->validate($request, [
-          'name' => 'required|max:191',
-          'email' => 'required|email|max:191',
-          'come_from' => 'required|max:191',
-          'address' => 'required',
-          'phone_number' => 'required|numeric'
+        'full_name' => 'required|max:191',
+        'email' => 'required|email|max:191',
+        'dob' => 'required|date',
+        'gender' => 'required|max:191',
+        'come_from' => 'required|max:191',
+        'address' => 'required',
+        'phone_number' => 'required|numeric'
       ]);
 
-      $object = new Member;
-      $object->name = $request->get('name');
+      $object = new Booked;
+      $object->full_name = $request->get('full_name');
       $object->email = $request->get('email');
+      $object->dob = $request->get('dob');
+      $object->gender = $request->get('gender');
       $object->come_from = $request->get('come_from');
       $object->address = $request->get('address');
       $object->phone_number = $request->get('phone_number');
-      $object->program_id = $request->get('program_id');
-      //$object->status = $request->get('status');
-      ///$object->user_id = NULL;
+      $program_id = $request->get('program_id');
+      $object->program_id = $program_id;
+
+      $price = Program::where('id', $program_id)->select('price')->first();
+      $description = "Silahkan melakukan tf ke-xxx sebesar $price->price";
+
+      $object->description = $description;
       $object->save();
 
-      return redirect()->route('member.index')->with('success', 'Member has been successfully added!');
+      return redirect()->route('public.register')->with('success', 'Registration success, please check your email!');
     }
 }

@@ -6,12 +6,12 @@
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
-      Detail Member
+      Detail Booked
       <small>Control panel</small>
     </h1>
     <ol class="breadcrumb">
       <li><a href="#"><i class="fa fa-user"></i> Home</a></li>
-      <li class="active">Detail member</li>
+      <li class="active">Detail booked</li>
     </ol>
   </section>
 
@@ -19,71 +19,49 @@
   <section class="content">
     <div class="row">
       <div class="col-md-12">
-        <a href="{{ route('member.store') }}" class="btn btn-primary">Register new member</a>
-        <a href="{{ route('member.edit', [$members->id]) }}" class="btn btn-warning">Edit this member</a>
         <button type="button" name="button" onclick="history.back()" class="btn btn-danger">Back</button>
         <br><br>
         <div class="box-body table-responsive no-padding">
           <table class="table table-striped">
             <tr>
               <th width="20%">Full name</th>
-              <td>{{$members->full_name}}</td>
+              <td>{{$bookeds->full_name}}</td>
             </tr>
             <tr>
               <th>E-mail</th>
-              <td>{{$members->email}}</td>
+              <td>{{$bookeds->email}}</td>
             </tr>
             <tr>
               <th>Date of birth</th>
-              <td>{{$members->dob}}</td>
+              <td>{{$bookeds->dob}}</td>
             </tr>
             <tr>
               <th>Gender</th>
-              <td>{{$members->gender}}</td>
+              <td>{{$bookeds->gender}}</td>
             </tr>
             <tr>
               <th>Come from</th>
-              <td>{{$members->come_from}}</td>
+              <td>{{$bookeds->come_from}}</td>
             </tr>
             <tr>
               <th>Address</th>
-              <td>{{$members->address}}</td>
+              <td>{{$bookeds->address}}</td>
             </tr>
             <tr>
               <th>Phone number</th>
-              <td>{{$members->phone_number}}</td>
+              <td>{{$bookeds->phone_number}}</td>
             </tr>
             <tr>
               <th>Program</th>
-              <td>{{$members->program->program_name}}</td>
+              <td>{{$bookeds->program->program_name}}</td>
             </tr>
             <tr>
-              <th>Status</th>
-              <?php
-              $status = $members->status;
-                if ($status == "Alumni") {
-                  $style = "color:red;font-weight:bold;";
-                }else {
-                  $style = "color:blue;font-weight:bold;";
-                }
-              ?>
-              <td style="{{$style}}">{{$status}}</td>
-            </tr>
-            <tr>
-              <th>Masterpiece</th>
-              <td>{{$members->masterpiece}}</td>
-            </tr>
-            <tr>
-              <th>PIC</th>
-              <td>{{$members->user->name}}</td>
+              <th>Description</th>
+              <td>{{$bookeds->description}}</td>
             </tr>
             <tr>
               <th>Created at</th>
-              <td>{{$members->created_at->format('d, M Y H:i')}}</td>
-            </tr>
-            <tr>
-              <th>Updated at</th>
-              <td>{{$members->updated_at->format('d, M Y H:i')}}</td>
+              <td>{{$bookeds->created_at->format('d, M Y H:i')}}</td>
             </tr>
           </table>
         </div>

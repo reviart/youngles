@@ -56,6 +56,13 @@ Route::prefix('member')->group(function () {
   Route::delete('destroy/{id}', 'MemberController@destroy')->name('member.destroy');
 });
 
+Route::prefix('booked')->group(function () {
+  Route::get('/', 'BookedController@index')->name('booked.index');
+  Route::get('detail/{id}', 'BookedController@detail')->name('booked.detail');
+  Route::post('move/{id}', 'BookedController@move')->name('booked.move');
+  Route::delete('destroy/{id}', 'BookedController@destroy')->name('booked.destroy');
+});
+
 Route::prefix('program')->group(function () {
   Route::get('/', 'ProgramController@index')->name('program.index');
   Route::get('detail/{id}', 'ProgramController@detail')->name('program.detail');

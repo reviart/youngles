@@ -25,4 +25,9 @@ class Program extends Model
   {
     return $this->hasMany('App\Member');
   }
+
+  public function bookeds()
+  {
+    return $this->hasMany('App\Bookeds');
+  }
 }

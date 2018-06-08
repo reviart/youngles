@@ -7,6 +7,7 @@ use App\Program;
 use App\Member;
 use App\Information;
 use App\User;
+use App\Booked;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -31,7 +32,8 @@ class HomeController extends Controller
       $programs = Program::count();
       $members = Member::count();
       $informations = Information::count();
-      return view('home', compact('members', 'programs', 'informations'));
+      $bookeds = Booked::count();
+      return view('home', compact('members', 'programs', 'informations', 'bookeds'));
     }
 
     public function home()
