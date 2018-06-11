@@ -55,8 +55,8 @@
                   <label for="gender">Gender*</label>
                   <select class="form-control" name="gender" required>
                     <option value="{{$members->gender}}">{{$members->gender}}</option>
-                    <option value="Pria">Pria</option>
-                    <option value="Wanita">Wanita</option>
+                    <option value="Man">Man</option>
+                    <option value="Woman">Woman</option>
                   </select>
                 </div>
                 <div class="form-group">

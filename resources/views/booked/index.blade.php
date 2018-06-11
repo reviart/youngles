@@ -50,7 +50,15 @@
                 <td>{{$data->program->program_name}}</td>
                 <td>{{$data->created_at->format('d, M Y H:i')}}</td>
                 <td width="5%"><a href="{{ route('booked.detail', [$data->id]) }}" class="btn btn-primary">Detail</a></td>
-                <td width="5%"><a href="{{ route('booked.move', [$data->id]) }}" class="btn btn-success">Confirm</a></td>
+
+                <td width="5%">
+                  <form class="" action="{{ route('booked.move', [$data->id]) }}" method="get">
+                    {{ csrf_field() }}
+                    {{ method_field('DELETE') }}
+                    <button type="submit" name="button" onclick="return confirm('Are you sure to confirm {{$data->full_name}}?')" class="btn btn-success">Confirm</button>
+                  </form>
+                </td>
+
                 <td width="5%">
                   <form class="" action="{{ route('booked.destroy', [$data->id]) }}" method="post">
                     {{ csrf_field() }}
@@ -58,6 +66,7 @@
                     <button type="submit" name="button" onclick="return confirm('Are you sure will remove {{$data->full_name}} data?')" class="btn btn-danger">Delete</button>
                   </form>
                 </td>
+
               </tr>
               @endforeach
             </table>

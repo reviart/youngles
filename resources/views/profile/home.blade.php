@@ -44,7 +44,7 @@
               <td>: {{Auth::user()->last_login}}</td>
             </tr>
           </table>
-          <a href="{{ route('profile.edit', [$datas[0]->id]) }}" class="btn btn-primary">Edit profile</a>
+          <a href="{{ route('profile.edit', [Auth::user()->id]) }}" class="btn btn-primary">Edit profile</a>
         </div>
       </div>
       <!-- /.row -->

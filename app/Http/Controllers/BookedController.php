@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Auth;
 use App\Booked;
 use App\Program;
+use App\Member;
 use Illuminate\Http\Request;
 
 class BookedController extends Controller
@@ -23,36 +24,29 @@ class BookedController extends Controller
     public function detail($id)
     {
       $bookeds = Booked::with('program')->where('id', $id)->first();
-      //dd($bookeds);
       return view('booked.detail', compact('bookeds'));
     }
 
-    public function move(Request $request, $id)
+    public function move($id)
     {
-      $this->validate($request, [
-          'full_name' => 'required|max:191',
-          'email' => 'required|email|max:191',
-          'dob' => 'required|date',
-          'gender' => 'required|max:191',
-          'come_from' => 'required|max:191',
-          'address' => 'required',
-          'phone_number' => 'required|numeric'
-      ]);
+      $bookeds = Booked::where('id', $id)->first();
 
-      //store to db
-      $datas->update([
-        'full_name' => $request->get('full_name'),
-        'email' => $request->get('email'),
-        'dob' => $request->get('dob'),
-        'gender' => $request->get('gender'),
-        'come_from' => $request->get('come_from'),
-        'address' => $request->get('address'),
-        'phone_number' => $request->get('phone_number'),
-        'program_id' => $request->get('program_id'),
-        'description' => $request->get('description')
-      ]);
+      $object = new Member;
+      $object->full_name = $bookeds->full_name;
+      $object->email = $bookeds->email;
+      $object->dob = $bookeds->dob;
+      $object->gender = $bookeds->gender;
+      $object->come_from = $bookeds->come_from;
+      $object->address = $bookeds->address;
+      $object->phone_number = $bookeds->phone_number;
+      $object->program_id = $bookeds->program_id;
+      $object->status = "Membership";
+      $object->user_id = Auth::user()->id;
+      $object->save();
 
-      return redirect()->route('booked.index')->with('success', 'Booked has been successfully updated!');
+      $bookeds->delete();
+
+      return redirect()->route('booked.index')->with('success', 'The data has been successfully confirmed!');
     }
 
     public function destroy($id)

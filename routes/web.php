@@ -59,7 +59,7 @@ Route::prefix('member')->group(function () {
 Route::prefix('booked')->group(function () {
   Route::get('/', 'BookedController@index')->name('booked.index');
   Route::get('detail/{id}', 'BookedController@detail')->name('booked.detail');
-  Route::post('move/{id}', 'BookedController@move')->name('booked.move');
+  Route::get('move/{id}', 'BookedController@move')->name('booked.move');
   Route::delete('destroy/{id}', 'BookedController@destroy')->name('booked.destroy');
 });
 

@@ -22,7 +22,7 @@ class MemberController extends Controller
 
     public function detail($id)
     {
-      $members = Member::with('program', 'user')->first();
+      $members = Member::with('program', 'user')->where('id', $id)->first();
       return view('member.detail', compact('members'));
     }
 
